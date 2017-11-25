@@ -2,11 +2,10 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
 
 void PrintIntro();
 void PlayGame();
-string GetString();
+std::string Getstring();
 bool AskToPlayAgain();
 
 //Einstiegspunkt in die Applikation
@@ -26,10 +25,10 @@ int main ()
 void PrintIntro() {
 	//Vorstellung des Spieles
 	constexpr int WORLD_LENGTH = 5;
-	cout << "Willkommen zu Bulls und Cows, ein lustiges Wortspiel\n";
-	cout << "kannst du das Isogramm aus " << WORLD_LENGTH;
-	cout << " Buchstaben erraten??\n";
-	cout << endl;
+	std::cout << "Willkommen zu Bulls und Cows, ein lustiges Wortspiel\n";
+	std::cout << "kannst du das Isogramm aus " << WORLD_LENGTH;
+	std::cout << " Buchstaben erraten??\n";
+	std::cout << std::endl;
 	return;
 }
 void PlayGame()
@@ -38,23 +37,23 @@ void PlayGame()
 	constexpr int ANZAHL_DER_WIEDERHOLUNGEN = 5;
 	for (int i = 1; i <= ANZAHL_DER_WIEDERHOLUNGEN; i++)
 	{
-		string Versuch = GetString();
-		cout << "Dein Tip war: " << Versuch << endl;
-		cout << endl;
+		std::string Versuch = GetString();
+		std::cout << "Dein Tip war: " << Versuch << std::endl;
+		std::cout << std::endl;
 	};
 }
-string GetString()
+std::string GetString()
 {   //Lassen Spiel deer raten
-	cout << "Gib hier bitte deinen Tip an\n";
-	string Tip = "";
-	getline(cin, Tip);
+	std::cout << "Gib hier bitte deinen Tip an\n";
+	std::string Tip = "";
+	std::getline(std::cin, Tip);
 	return Tip;
 }
 bool AskToPlayAgain()
 {
-	cout << "Moechtest du nochmal spielen? (J/N)\n";
-	string Antwort = "";
-	getline(cin, Antwort);
+	std::cout << "Moechtest du nochmal spielen? (J/N)\n";
+	std::string Antwort = "";
+	std::getline(std::cin, Antwort);
 	switch (Antwort[0])
 	{
 	case 'j':
