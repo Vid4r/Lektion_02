@@ -2,10 +2,9 @@
 #include <iostream>
 #include <string>
 
-
 void PrintIntro();
 void PlayGame();
-std::string Getstring();
+std::string GetString();
 bool AskToPlayAgain();
 
 //Einstiegspunkt in die Applikation
