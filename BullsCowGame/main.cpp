@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include "FBullCowGame.h"
 
 void PrintIntro();
 void PlayGame();
@@ -14,6 +15,8 @@ int main ()
 	bool bPlayAgain = false;
 	do
 	{ 
+		FBullCowGame BCGame;
+		BCGame.GetCurrentTry();
 		PrintIntro();
 		PlayGame();
 		bPlayAgain = AskToPlayAgain();

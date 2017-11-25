@@ -1,6 +1,27 @@
 #include "stdafx.h"
 #include "FBullCowGame.h"
 
-void FBullCowgame::Reset()
+void FBullCowGame::Reset()
 {
+	return;
+}
+
+int FBullCowGame::GetMaxTries()
+{
+	return 0;
+}
+
+int FBullCowGame::GetCurrentTry()
+{
+	return 0;
+}
+
+bool FBullCowGame::IsGameWon()
+{
+	return false;
+}
+
+bool FBullCowGame::CheckGuessValitity(std::string)
+{
+	return false;
 }

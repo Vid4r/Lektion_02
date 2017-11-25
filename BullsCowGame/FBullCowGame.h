@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class FBullCowgame
+class FBullCowGame
 {
 public:
 	void Reset(); // ToDo
@@ -9,7 +9,6 @@ public:
 	int GetCurrentTry();
 	bool IsGameWon();
 	bool CheckGuessValitity(std::string);//ToDo einen besseren Rückgabewert finden
-
 private:
 	int MyCurrentTry();
 	int MyMaxTries();
