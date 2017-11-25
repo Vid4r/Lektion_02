@@ -4,12 +4,15 @@
 class FBullCowGame
 {
 public:
+	FBullCowGame();// Constructor
+	int GetMaxTries()const;
+	int GetCurrentTry()const;
+	bool IsGameWon()const;
+
 	void Reset(); // ToDo
-	int GetMaxTries();
-	int GetCurrentTry();
-	bool IsGameWon();
 	bool CheckGuessValitity(std::string);//ToDo einen besseren Rückgabewert finden
 private:
-	int MyCurrentTry();
-	int MyMaxTries();
+	// werden im Constructor initialisiert
+	int MyCurrentTry;
+	int MyMaxTries;
 };

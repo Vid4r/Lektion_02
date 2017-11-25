@@ -8,6 +8,8 @@ void PlayGame();
 std::string GetString();
 bool AskToPlayAgain();
 
+FBullCowGame BCGame;  // SpielInstanz
+
 //Einstiegspunkt in die Applikation
 
 int main ()
@@ -15,8 +17,7 @@ int main ()
 	bool bPlayAgain = false;
 	do
 	{ 
-		FBullCowGame BCGame;
-		BCGame.GetCurrentTry();
+		BCGame.Reset();
 		PrintIntro();
 		PlayGame();
 		bPlayAgain = AskToPlayAgain();
@@ -35,10 +36,10 @@ void PrintIntro() {
 }
 void PlayGame()
 {
+	int MaxTries = BCGame.GetMaxTries();
 	//Loop entsprechend der Anzahl der Wiederholungen
-	constexpr int ANZAHL_DER_WIEDERHOLUNGEN = 5;
-	for (int i = 1; i <= ANZAHL_DER_WIEDERHOLUNGEN; i++)
-	{
+	for (int i = 1; i <= MaxTries; i++)
+	{   
 		std::string Versuch = GetString();
 		std::cout << "Dein Tip war: " << Versuch << std::endl;
 		std::cout << std::endl;
@@ -46,7 +47,8 @@ void PlayGame()
 }
 std::string GetString()
 {   //Lassen Spiel deer raten
-	std::cout << "Gib hier bitte deinen Tip an\n";
+	int aktuellerVersuch = BCGame.GetCurrentTry();
+	std::cout << "Tip:" << aktuellerVersuch << std::endl << " " << "Gib hier bitte deinen Tip an\n";
 	std::string Tip = "";
 	std::getline(std::cin, Tip);
 	return Tip;
