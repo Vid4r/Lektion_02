@@ -36,9 +36,9 @@ int main ()
 
 void PrintIntro() {
 	//Vorstellung des Spieles
-	constexpr int32 WORLD_LENGTH = 5;
+	int32 WORD_LENGTH = BCGame.GetHiddenWordLength();
 	std::cout << "Willkommen zu Bulls und Cows, ein lustiges Wortspiel\n";
-	std::cout << "kannst du das Isogramm aus " << WORLD_LENGTH;
+	std::cout << "kannst du das Isogramm aus " << WORD_LENGTH;
 	std::cout << " Buchstaben erraten??\n";
 	std::cout << std::endl;
 	return;

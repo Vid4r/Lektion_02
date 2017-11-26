@@ -1,12 +1,11 @@
 #include "stdafx.h"
 #include "FBullCowGame.h"
-#include <locale>
-#include <algorithm>
 
 FBullCowGame::FBullCowGame() { Reset(); };
 
 int32 FBullCowGame::GetMaxTries()const{return MyMaxTries;}
 int32 FBullCowGame::GetCurrentTry()const{return MyCurrentTry;}
+int32 FBullCowGame::GetHiddenWordLength() const {return MyHiddenWord.length();}
 bool FBullCowGame::IsGameWon() const
 {
 	return false;
@@ -15,14 +14,14 @@ bool FBullCowGame::IsGameWon() const
 void FBullCowGame::Reset()
 {
 	constexpr int32 MAX_TRIES = 8;
-	const FString HIDDEN_WORD = "Kacke";
+	const FString HIDDEN_WORD = "Fernseher";
 	MyHiddenWord = HIDDEN_WORD;
 	MyMaxTries = MAX_TRIES;
 	MyCurrentTry = 1;	
 	return;
 }
 
-bool FBullCowGame::CheckGuessValitity(FString)
+bool FBullCowGame::CheckGuessValitity(FString) const
 {
 	return false;
 }
@@ -39,20 +38,21 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Tip)
 	int32 HiddenWordLength = MyHiddenWord.length();
 	for (int32 i = 0; i < HiddenWordLength; i++) 
 	{	
-			for (int32 j = 0; j < HiddenWordLength; j++) 
-		  // wenn Buchstabe übereinstimmt jedoch nicht die Position
-		  //wenn Buchstabe und Position übereinstimmt
-				if (Tip[i] == MyHiddenWord[j]) //erstmal schauen ob welche übereinstimmen
+		for (int32 j = 0; j < HiddenWordLength; j++) {
+			// wenn Buchstabe übereinstimmt jedoch nicht die Position
+			//wenn Buchstabe und Position übereinstimmt
+			if (Tip[i] == MyHiddenWord[j]) //erstmal schauen ob welche übereinstimmen
+			{
+				if (i == j) // wenn Posi übereinstimmt Bulls
 				{
-					if (i == j) // wenn Posi übereinstimmt Bulls
-					{
-						BullCowCount.Bulls++;
-					}
-					else // ansonsten Cows
-					{
-						BullCowCount.Cows++;
-					}
+					BullCowCount.Bulls++;
 				}
+				else // ansonsten Cows
+				{
+					BullCowCount.Cows++;
+				}
+			}
+		}
 	}
 	return BullCowCount;
 }

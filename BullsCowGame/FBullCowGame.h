@@ -19,10 +19,11 @@ public:
 	
 	int32 GetMaxTries()const;
 	int32 GetCurrentTry()const;
+	int32 GetHiddenWordLength() const;
 	bool IsGameWon()const;
+	bool CheckGuessValitity(FString) const;//ToDo einen besseren Rückgabewert finden
 
 	void Reset(); // ToDo
-	bool CheckGuessValitity(FString);//ToDo einen besseren Rückgabewert finden
 	// Methode BullCowCount Zählt Bulls und Cows erhöht die Anzahl der Versuche vorrausgesetzt der Versuch war gültig
 	FBullCowCount SubmitGuess(FString);
 private:
