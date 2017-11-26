@@ -38,20 +38,21 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Tip)
 	// vergleicht alle Buchstaben mit dem geheimen Wort
 	int32 HiddenWordLength = MyHiddenWord.length();
 	for (int32 i = 0; i < HiddenWordLength; i++) 
-	{
-		//wenn Buchstabe und Position übereinstimmt
-		if (Tip[i] == MyHiddenWord[i])
-			{
-				BullCowCount.Bulls++;
-			}	
+	{	
 			for (int32 j = 0; j < HiddenWordLength; j++) 
 		  // wenn Buchstabe übereinstimmt jedoch nicht die Position
-				 if (i != j && (Tip[j] == MyHiddenWord[i]))
-
+		  //wenn Buchstabe und Position übereinstimmt
+				if (Tip[i] == MyHiddenWord[j]) //erstmal schauen ob welche übereinstimmen
+				{
+					if (i == j) // wenn Posi übereinstimmt Bulls
 					{
-						//zähle Cows hoch
+						BullCowCount.Bulls++;
+					}
+					else // ansonsten Cows
+					{
 						BullCowCount.Cows++;
-					}	
+					}
+				}
 	}
 	return BullCowCount;
 }
