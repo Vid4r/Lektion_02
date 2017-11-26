@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "FBullCowGame.h"
+#include <locale>
+#include <algorithm>
 
 FBullCowGame::FBullCowGame() { Reset(); };
 
@@ -35,26 +37,21 @@ FBullCowCount FBullCowGame::SubmitGuess(FString Tip)
 	// loop durch alle Buchstaben im Versuch
 	// vergleicht alle Buchstaben mit dem geheimen Wort
 	int32 HiddenWordLength = MyHiddenWord.length();
-	for (int32 i = 0; i < HiddenWordLength; i++)
+	for (int32 i = 0; i < HiddenWordLength; i++) 
 	{
-		for (int32 j = 0; j < HiddenWordLength; j++)
-		{
-			if
-				(Tip[i] == MyHiddenWord[i])
-				if (i == j)
-				{
-					BullCowCount.Bulls++;
-				}
-				else 
-				{
-					//zähle Cows hoch
-					BullCowCount.Cows++;
-				}
-				
+		//wenn Buchstabe und Position übereinstimmt
+		if (Tip[i] == MyHiddenWord[i])
 			{
+				BullCowCount.Bulls++;
+			}	
+			for (int32 j = 0; j < HiddenWordLength; j++) 
+		  // wenn Buchstabe übereinstimmt jedoch nicht die Position
+				 if (i != j && (Tip[j] == MyHiddenWord[i]))
 
-			}
-		}
+					{
+						//zähle Cows hoch
+						BullCowCount.Cows++;
+					}	
 	}
 	return BullCowCount;
 }
