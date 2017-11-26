@@ -36,9 +36,8 @@ int main ()
 
 void PrintIntro() {
 	//Vorstellung des Spieles
-	int32 WORD_LENGTH = BCGame.GetHiddenWordLength();
 	std::cout << "Willkommen zu Bulls und Cows, ein lustiges Wortspiel\n";
-	std::cout << "kannst du das Isogramm aus " << WORD_LENGTH;
+	std::cout << "kannst du das Isogramm aus " << BCGame.GetHiddenWordLength();
 	std::cout << " Buchstaben erraten??\n";
 	std::cout << std::endl;
 	return;
@@ -50,6 +49,9 @@ void PlayGame()
 	for (int32 i = 1; i <= MaxTries; i++)
 	{   
 		FText Tip = GetString();
+
+		EGuessStatus Status = BCGame.CheckGuessValitity(Tip);
+
 		FBullCowCount FBullCowCount = BCGame.SubmitGuess(Tip);
 		std::cout << "Bulls:" << FBullCowCount.Bulls;
 		std::cout << ". Cows:" << FBullCowCount.Cows;

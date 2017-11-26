@@ -4,6 +4,13 @@
 using FString = std::string;
 using int32 = int;
 
+enum class EGuessStatus
+{
+	OK,
+	No_Isogramm,
+	Wrong_Length,
+	Not_Lowercase
+};
 
 // alle Variablen sind mit 0 initialisiert
 struct FBullCowCount
@@ -21,7 +28,7 @@ public:
 	int32 GetCurrentTry()const;
 	int32 GetHiddenWordLength() const;
 	bool IsGameWon()const;
-	bool CheckGuessValitity(FString) const;//ToDo einen besseren Rückgabewert finden
+	EGuessStatus CheckGuessValitity(FString) const;
 
 	void Reset(); // ToDo
 	// Methode BullCowCount Zählt Bulls und Cows erhöht die Anzahl der Versuche vorrausgesetzt der Versuch war gültig

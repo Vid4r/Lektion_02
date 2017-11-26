@@ -21,10 +21,26 @@ void FBullCowGame::Reset()
 	return;
 }
 
-bool FBullCowGame::CheckGuessValitity(FString) const
+EGuessStatus FBullCowGame::CheckGuessValitity(FString) const
 {
-	return false;
-}
+	
+	if (false) // wenn Wortlänge falsch ist
+	{
+		return EGuessStatus::Wrong_Length;
+	}
+	else if (false) // wenn kein Isogramm
+	{
+		return EGuessStatus::No_Isogramm;
+	}
+	else if (false)
+	{
+		return EGuessStatus::Not_Lowercase;
+	}
+	else
+	{
+		return EGuessStatus::OK;
+	}
+} 
 
 // bring einen validen Versuch zurück, zählt Versuche
 FBullCowCount FBullCowGame::SubmitGuess(FString Tip)
